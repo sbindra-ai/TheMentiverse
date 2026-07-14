@@ -13,18 +13,23 @@ The Mentiverse should use repeatable, environment-based deployments from the beg
 
 Docker should provide consistent application runtime behavior across local development, CI, and Render. The production image should install only required dependencies, build the Next.js application, and run with environment-specific configuration. See the root `Dockerfile`.
 
+The runner image must set `HOSTNAME=0.0.0.0`. Render sets `HOSTNAME` to the container id by default; Next.js standalone would bind to that value and return HTTP 502. Render injects `PORT` at runtime (often `10000`) — do not assume port `3000` in production.
+
+`NEXT_PUBLIC_*` and Clerk keys used by middleware must be available as Docker build `ARG`s (same names as env vars) so the client bundle and middleware see them at build time.
+
 ## Render.com
 
-Render should host the web service and managed PostgreSQL database when the application is ready. Environment variables must be configured through Render secrets rather than committed files.
+Render hosts the web service. PostgreSQL is optional until Prisma/profiles ship. Environment variables must be configured through Render secrets rather than committed files.
 
 Required now for auth-enabled deploys:
 
 - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
 - `CLERK_SECRET_KEY`
 - Clerk URL helpers (`NEXT_PUBLIC_CLERK_SIGN_IN_URL`, etc.)
-- `NEXT_PUBLIC_APP_URL` set to the deployed origin
+- `NEXT_PUBLIC_APP_URL` set to the deployed origin (e.g. `https://the-mentiverse-web.onrender.com` or the custom domain)
+- `HOSTNAME=0.0.0.0` (also baked into the Dockerfile)
 
-Also configure the same origin in the Clerk dashboard allowed origins / redirect URLs.
+Also configure the same origin in the Clerk dashboard allowed origins / redirect URLs. After changing `NEXT_PUBLIC_*` values, trigger a **clear cache / rebuild** so Docker rebuilds with the new build args.
 
 ## Configuration
 
