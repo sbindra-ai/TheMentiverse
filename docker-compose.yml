@@ -6,6 +6,8 @@ services:
     ports:
       - "3000:3000"
     environment:
+      HOSTNAME: 0.0.0.0
+      PORT: "3000"
       NEXT_PUBLIC_APP_URL: http://localhost:3000
       DATABASE_URL: postgresql://mentiverse:mentiverse@postgres:5432/mentiverse
     depends_on:

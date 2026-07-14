@@ -15,8 +15,16 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap"
 });
 
+function getMetadataBase(): URL {
+  try {
+    return new URL(siteConfig.url);
+  } catch {
+    return new URL("http://localhost:3000");
+  }
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: getMetadataBase(),
   title: {
     default: "Mentiverse",
     template: "%s | Mentiverse"
