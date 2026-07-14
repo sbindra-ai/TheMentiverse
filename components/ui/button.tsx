@@ -1,26 +1,26 @@
-import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-[0_14px_30px_rgba(18,105,100,0.22)] hover:-translate-y-0.5 hover:bg-primary/90",
+          "bg-primary text-primary-foreground shadow-[0_10px_28px_rgba(37,99,235,0.28)] hover:-translate-y-0.5 hover:bg-primary/90",
         secondary:
           "bg-secondary text-secondary-foreground hover:-translate-y-0.5 hover:bg-secondary/80",
         outline:
-          "border border-input bg-background/80 hover:-translate-y-0.5 hover:bg-accent hover:text-accent-foreground",
-        ghost: "hover:bg-accent hover:text-accent-foreground"
+          "border border-border bg-white text-foreground shadow-sm hover:-translate-y-0.5 hover:bg-secondary",
+        ghost: "text-muted-foreground hover:bg-secondary hover:text-foreground"
       },
       size: {
         default: "h-11 px-5 py-2",
         sm: "h-9 px-3",
-        lg: "h-12 px-6",
+        lg: "h-12 px-6 text-[0.95rem]",
         icon: "h-10 w-10"
       }
     },

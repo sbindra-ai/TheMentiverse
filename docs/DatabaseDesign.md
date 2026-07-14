@@ -2,6 +2,12 @@
 
 PostgreSQL will be the primary system of record. Prisma should manage schema definitions, migrations, and typed database access.
 
+## Current State
+
+The application database is not implemented yet. Identity and sessions live in Clerk. Initial participation role (`mentee` / `mentor`) is stored temporarily in Clerk `unsafeMetadata.role` so signup can capture intent before Prisma exists.
+
+When PostgreSQL lands, that role should be synced into Mentiverse `User` / role tables and become the source of truth for application authorization.
+
 ## Design Principles
 
 - Model the platform around users, roles, profiles, programs, applications, matches, and opportunities.
@@ -12,9 +18,9 @@ PostgreSQL will be the primary system of record. Prisma should manage schema def
 
 ## Initial Domain Entities
 
-- User: identity record linked to authentication provider data.
+- User: identity record linked to authentication provider data (Clerk user id).
 - Profile: public and private user details.
-- Role: student, mentor, admin, organization owner, recruiter, or partner.
+- Role: student/mentee, mentor, admin, organization owner, recruiter, or partner.
 - Organization: university, nonprofit, company, or community partner.
 - Program: structured mentorship initiative owned by an organization or the platform.
 - MentorApplication: mentor onboarding and review data.
@@ -31,4 +37,3 @@ Educational, career, resume, and application data should be treated as sensitive
 ## Migration Strategy
 
 All schema changes should be created through Prisma migrations. Production migrations must be reviewed in pull requests and tested against realistic seed data before deployment.
-

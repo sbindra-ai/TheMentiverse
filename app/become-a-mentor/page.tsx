@@ -12,7 +12,11 @@ export default function BecomeAMentorPage() {
         eyebrow="Become a mentor"
         title="Help students and early-career professionals move with confidence."
         description="The Mentiverse will make it easier for mentors to share experience through structured programs, clear expectations, and responsible matching."
-        primaryAction={{ label: "Contact Us", href: "/contact" }}
+        primaryAction={{
+          label: "Sign up as a mentor",
+          href: "/sign-up?role=mentor"
+        }}
+        secondaryAction={{ label: "Contact Us", href: "/contact" }}
       />
       <ContentSection
         title="Mentor principles"

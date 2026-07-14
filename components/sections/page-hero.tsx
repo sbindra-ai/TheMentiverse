@@ -22,10 +22,10 @@ export function PageHero({
   secondaryAction
 }: PageHeroProps) {
   return (
-    <section className="overflow-hidden border-b bg-[linear-gradient(135deg,#fff8ed_0%,#f9efe1_45%,#edf8f6_100%)]">
+    <section className="overflow-hidden border-b border-border/70 bg-[radial-gradient(circle_at_90%_10%,rgba(59,130,246,0.12),transparent_40%),linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)]">
       <div className="container py-16 sm:py-20">
         <div className="max-w-3xl">
-          <p className="inline-flex rounded-full border border-primary/20 bg-white/70 px-4 py-2 text-sm font-semibold text-primary shadow-sm">
+          <p className="inline-flex rounded-full border border-primary/15 bg-white px-4 py-2 text-sm font-semibold text-primary shadow-sm">
             {eyebrow}
           </p>
           <h1 className="display-heading mt-5 text-4xl font-bold leading-tight text-foreground sm:text-5xl">

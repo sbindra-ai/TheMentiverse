@@ -12,7 +12,10 @@ export default function FindAMentorPage() {
         eyebrow="Find a mentor"
         title="Guidance for school, career, and the decisions in between."
         description="The Mentiverse will help students and young professionals connect with mentors who can support their goals, questions, and next opportunities."
-        primaryAction={{ label: "Contact Us", href: "/contact" }}
+        primaryAction={{
+          label: "Sign up as a mentee",
+          href: "/sign-up?role=mentee"
+        }}
         secondaryAction={{ label: "See Programs", href: "/programs" }}
       />
       <ContentSection
